@@ -2,7 +2,6 @@ import OpenAI from "openai";
 import Form from "@/components/Form";
 import { getTopicList } from "@/app/firebaseutils";
 import { get } from "http";
-import Link from "next/link";
 
 function getBaseURL() {
     if (typeof process.env.VERCEL_URL === 'string') {
@@ -23,9 +22,9 @@ export default async function Home({ params } : {params: {course: string}}) {
     // console.log(modelsList)
     return (
         <div>
-            <Link href="/" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-2 px-4 rounded-lg">&lt;</Link>
+            
             <h1 className='text-2xl'>aquí va el chat de {params.course}</h1>
-            <Form modelsList={modelsList} topicsArray={topics || ['']}/>
+            <Form modelsList={modelsList} topicsArray={topics || ['']} courseId={params.course}/>
         </div>
     );
 }

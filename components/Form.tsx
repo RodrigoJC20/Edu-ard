@@ -1,8 +1,9 @@
 'use client'
 import type OpenAI from 'openai'
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 
-const Form = ({ modelsList, topicsArray}: { modelsList: OpenAI.ModelsPage , topicsArray: string[]}) => {
+const Form = ({ modelsList, topicsArray, courseId}: { modelsList: OpenAI.ModelsPage , topicsArray: string[], courseId: string}) => {
 
 
 
@@ -152,10 +153,16 @@ const Form = ({ modelsList, topicsArray}: { modelsList: OpenAI.ModelsPage , topi
     setCurrentModel(e.target.value)
   }
 
+  const updateStudentTags = async (e: any) => {
+    e.preventDefault()
+  }
+
   return (
+    
     <div
         className='flex-col h-screen justify-center'
     >
+      <Link href="/" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-2 px-4 rounded-lg">&lt;</Link>
 
       <div
           className='h-full w-full mx-2 flex flex-col items-start gap-3 pt-6 last:mb-6 md:mx-auto md:max-w-3xl'
