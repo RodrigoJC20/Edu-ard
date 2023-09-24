@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 20px;
     width: 100%;
     
 }
@@ -48,20 +48,21 @@
     color: #4c4c4c;
     justify-content: start;
     align-items: start;
-    padding: 20px ;
+    padding: 30px ;
     font-size: 1.5rem;
-    width: 40%;
-    height: 150px;
+    width: 100%;
+    height: 100px;
     background: linear-gradient(to bottom, #D2C3FE, #d9d9d900);
     border-radius: 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .materia:hover {
     transform: scale(1.1);
-    background: linear-gradient(to bottom, #D2C3FE, #D2C3FE);
-
+    background: linear-gradient(to bottom, #b9a2fc, #D2C3FE);
+    color: #ffffff;
 }
 
 .inp {
