@@ -49,8 +49,8 @@
 }
 
 .info input:hover {
-    background-color: #373737;
-    color: #e8e8e8;
+    background-color: #eaeaea;
+    color: #4c4c4c;
 }
 
 .info button {
@@ -67,12 +67,12 @@
 
 .info button:hover {
     background-color: #933cfe;
-    transition: 0.5s;
 }
 
 .instructor {
     font-weight: 500;
     color: #828282b5;
+    transition: 0.5s;
 }
 
 .instructor:hover {
