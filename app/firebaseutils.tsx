@@ -32,3 +32,11 @@ export const getTopicList = async (courseId: string) => {
     }
 }
 
+export const updateStudentCourse = async (cid: string, sn: string, tl: string[]) => {
+    await addDoc(collection(db, 'course-student'), {
+        studentName: sn.trim(),
+        courseId: cid,
+        topicsList: tl
+    });
+}
+

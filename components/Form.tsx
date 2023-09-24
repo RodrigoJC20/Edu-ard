@@ -2,10 +2,11 @@
 import type OpenAI from 'openai'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { updateStudentCourse } from '@/app/firebaseutils'
+
+const termsInQuotes: any[] = []
 
 const Form = ({ modelsList, topicsArray, courseId}: { modelsList: OpenAI.ModelsPage , topicsArray: string[], courseId: string}) => {
-
-
 
   const messageInput = useRef<HTMLTextAreaElement | null>(null)
   // causes rerender without useEffect due to suspense boundary
@@ -117,14 +118,15 @@ const Form = ({ modelsList, topicsArray, courseId}: { modelsList: OpenAI.ModelsP
     const display = currentResponse.join('')
 
     const regex = /"([^"]+)"/g
-    const termsInQuotes: any[] = []
 
     const cleanedDisplay = display.replace(regex, (match, term) => {
+      console.log(term)
       termsInQuotes.push(term)
       return ''
     })
 
     setHistory((prev) => [...prev.slice(0, -1), cleanedDisplay])
+    console.log(termsInQuotes)
     console.log('rerender-2')
     // breaks text indent on refresh due to streaming
     // localStorage.setItem('response', JSON.stringify(history))
@@ -157,12 +159,18 @@ const Form = ({ modelsList, topicsArray, courseId}: { modelsList: OpenAI.ModelsP
     e.preventDefault()
   }
 
+  const closeChat = async (e: any) => {
+    console.log(termsInQuotes)
+    await updateStudentCourse(courseId, "studentName", termsInQuotes);
+    window.location.href = "/"
+  }
+
   return (
     
     <div
         className='flex-col h-screen justify-center'
     >
-      <Link href="/" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-2 px-4 rounded-lg">&lt;</Link>
+      <button onClick={closeChat}>&lt;</button>
 
       <div
           className='h-full w-full mx-2 flex flex-col items-start gap-3 pt-6 last:mb-6 md:mx-auto md:max-w-3xl'
