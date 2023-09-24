@@ -22,8 +22,9 @@ export default async function Home({ params } : {params: {course: string}}) {
     // console.log(modelsList)
     return (
         <div>
+            
             <h1 className='text-2xl'>aquí va el chat de {params.course}</h1>
-            <Form modelsList={modelsList} topicsArray={topics || ['']}/>
+            <Form modelsList={modelsList} topicsArray={topics || ['']} courseId={params.course}/>
         </div>
     );
 }

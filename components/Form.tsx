@@ -2,8 +2,9 @@
 import type OpenAI from 'openai'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Form.module.css'
+import Link from 'next/link'
 
-const Form = ({ modelsList, topicsArray}: { modelsList: OpenAI.ModelsPage , topicsArray: string[]}) => {
+const Form = ({ modelsList, topicsArray, courseId}: { modelsList: OpenAI.ModelsPage , topicsArray: string[], courseId: string}) => {
 
 
 
@@ -117,7 +118,7 @@ const Form = ({ modelsList, topicsArray}: { modelsList: OpenAI.ModelsPage , topi
     const display = currentResponse.join('')
 
     const regex = /"([^"]+)"/g
-    const termsInQuotes = []
+    const termsInQuotes: any[] = []
 
     const cleanedDisplay = display.replace(regex, (match, term) => {
       termsInQuotes.push(term)
@@ -151,6 +152,10 @@ const Form = ({ modelsList, topicsArray}: { modelsList: OpenAI.ModelsPage , topi
 
   const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentModel(e.target.value)
+  }
+
+  const updateStudentTags = async (e: any) => {
+    e.preventDefault()
   }
 
   return (
