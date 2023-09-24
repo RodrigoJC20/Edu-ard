@@ -6,6 +6,8 @@ import React, { useState, useEffect } from "react";
 import TopicList from "../../topics/[course]/page";
 import Charts from "@/components/Charts";
 import StudentList from "@/components/StudentList";
+import Header from "../../../../components/Header";
+import styles from './page.module.css';
 
 interface UserData {
     name: string;
@@ -57,6 +59,10 @@ export default function Instructor({ params } : {params: {course: string}}) {
 
     return (
         <>
+            <Header />
+            <div>
+                <Link href={"/instructor/courses/" + params.course} className={styles.backButton}>&lt; Regresar</Link>
+            </div>
             <div className={"flex"}>
                 <main className={"flex-col w-1/2 mx-auto relative"}>
                     <Charts data={data}/>
