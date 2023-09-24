@@ -170,17 +170,15 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
 
   return (
     <div className={styles.chatContainer}>
-      <button onClick={closeChat}>&le;</button>
-      <div className={styles.messageList}>
+      {/* <button onClick={closeChat}>&le;</button> */}
       <div className={styles.imgContainer}>
         <img className={styles.eduImg} src="/Edu-ard.svg" alt="" />
         <p>Curso: Ejemplo</p>
         <img className={styles.imgGif} src="/logoChat.gif" alt="" />
       </div>
-
+  
       <div className={styles.chatContainer1}>
         <div className={styles.messageList}>
-
           {history.map((item: string, index: number) => (
             <div
               key={index}
@@ -190,11 +188,8 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
             </div>
           ))}
         </div>
-
-        <form
-          onSubmit={handleSubmit}
-          className={styles.chatForm}
-        >
+  
+        <form onSubmit={handleSubmit} className={styles.chatForm}>
           <textarea
             name="Message"
             placeholder="Type your query"
@@ -221,8 +216,8 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
         </form>
       </div>
     </div>
-
   );
+  
 
 
 }
