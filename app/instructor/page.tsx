@@ -58,10 +58,13 @@ export default function Instructor() {
                         <h3 className={styles.h3}>Tus cursos</h3>
                         <div className={styles.materias}>
                             {courses?.map((course) => (
-                                <div key={course.id} className={`flex ${styles.materia}`} >
-                                    <Link href={`instructor/courses/${course.id}`}>{course.name}</Link>
-                                </div>
+                                <Link key={course.id} href={`instructor/courses/${course.id}`}>
+                                    <div className={`flex ${styles.materia}`}>
+                                        {course.name}
+                                    </div>
+                                </Link>
                             ))}
+
                         </div>
                     </div>
                     <div className={styles.info}>
