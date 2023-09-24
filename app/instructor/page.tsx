@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { collection, addDoc, onSnapshot, query } from "firebase/firestore"; 
 import { db } from "../../lib/firebase/index";
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect } from "react";
 
 type Course = {
     id: string;

@@ -116,7 +116,7 @@ const Form = ({ modelsList, topicsArray}: { modelsList: OpenAI.ModelsPage , topi
     const display = currentResponse.join('')
 
     const regex = /"([^"]+)"/g
-    const termsInQuotes = []
+    const termsInQuotes: any[] = []
 
     const cleanedDisplay = display.replace(regex, (match, term) => {
       termsInQuotes.push(term)
