@@ -164,12 +164,13 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
 
   const closeChat = async (e: any) => {
     console.log(termsInQuotes)
-    await updateStudentCourse(courseId, "studentName", termsInQuotes);
+    await updateStudentCourse(courseId, "Marco", termsInQuotes);
     window.location.href = "/"
   }
 
   return (
     <div className={styles.chatContainer}>
+      <button onClick={closeChat}>&le;</button>
       <div className={styles.messageList}>
 
         {history.map((item: string, index: number) => (

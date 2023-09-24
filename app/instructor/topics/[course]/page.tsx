@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { collection, addDoc, onSnapshot, query, doc, setDoc, getDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "../../../../lib/firebase/index";
 import { getDocRef } from "@/app/firebaseutils";
+import styles  from './topics.module.css';
 
 export default function TopicList({ params } : {params: {course: string}}) {
 
@@ -46,17 +47,8 @@ export default function TopicList({ params } : {params: {course: string}}) {
     }, [params.course]);
 
     return (
-        <div>
-            <div>
-                <div>
-                    {topics?.map((topic, index) => (
-                        <div key={index} className="flex">
-                            <h1>{topic}</h1>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <form onSubmit={addTopic}>
+        <div className={styles.main}>
+            <form onSubmit={addTopic} className={styles.form}>
                 <h3>{courseName}</h3>
                 <input
                     type="text"
@@ -66,6 +58,16 @@ export default function TopicList({ params } : {params: {course: string}}) {
                 />
                 <button type="submit">Agregar</button>
             </form>
+            <div>
+                <div className={styles.topic}>
+                    {topics?.map((topic, index) => (
+                        <div key={index}>
+                            <h1>{topic}</h1>
+                            <button>X</button>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
