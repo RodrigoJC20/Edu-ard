@@ -223,7 +223,7 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
           <form onSubmit={handleSubmit} className={styles.chatForm}>
             <textarea
               name="Message"
-              placeholder="Type your query"
+              placeholder="Escribe tu pregunta..."
               ref={messageInput}
               onKeyDown={handleEnter}
               className={styles.textarea}

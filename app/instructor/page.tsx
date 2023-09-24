@@ -58,19 +58,6 @@ export default function Instructor() {
                 <div className={styles.main}>
                     <h1 className='text-2xl $'>¡Bienvenido Mtro. López!</h1>
                     <div className={styles.info}>
-                        <h3 className={styles.h3}>Tus cursos</h3>
-                        <div className={styles.materias}>
-                            {courses?.map((course) => (
-                                <Link key={course.id} href={`instructor/courses/${course.id}`}>
-                                    <div className={`flex ${styles.materia}`}>
-                                        {course.name}
-                                    </div>
-                                </Link>
-                            ))}
-
-                        </div>
-                    </div>
-                    <div className={styles.info}>
                         <h3 className={styles.h3}>Agregar curso</h3>
                         <form className={styles.inp} onSubmit={addCourse}>
                             <input
@@ -81,6 +68,20 @@ export default function Instructor() {
                             />
                             <button className={styles.subtn} type="submit">Agregar</button>
                         </form>
+                    </div>
+                    <div className={styles.info}>
+                        <h3 className={styles.h3}>Tus cursos</h3>
+                        <div className={styles.materias}>
+                            {courses?.map((course) => (
+                                <Link key={course.id} href={`instructor/courses/${course.id}`}>
+                                    <div className={`flex ${styles.materia}`}>
+                                    <img src="/Book.svg" alt="" className="w-7 h-7 mr-2 mt-1" />
+                                        {course.name}
+                                    </div>
+                                </Link>
+                            ))}
+
+                        </div>
                     </div>
                 </div>
             </div>

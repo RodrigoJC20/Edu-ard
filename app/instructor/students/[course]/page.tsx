@@ -67,6 +67,7 @@ export default function Instructor({ params } : {params: {course: string}}) {
             </div>
             <div className={"flex"}>
                 <main className={"flex-col w-1/2 mx-auto relative"}>
+                    <h1 className={styles.stats}>Estadística General</h1>
                     <Charts data={data}/>
                     <StudentList users={data}/>
                 </main>

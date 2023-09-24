@@ -11,3 +11,9 @@
 .backButton:hover {
     color: #933cfe; /* Change color on hover if desired */
 }
+
+.stats {
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}

@@ -64,15 +64,15 @@
 }
 
 .userMessage {
-    background-color: #4A90E2;
+    background-color: #9486F5;
     color: white;
     border-radius: 20px 0px 20px 20px; 
 }
 
 .botMessage {
     align-self: flex-start; 
-    background-color: #ECECEC; 
-    color: #333;
+    background-color: #A6A6A6; 
+    color: white;
     border-radius: 0px 20px 20px 20px; 
 }
 
@@ -88,13 +88,15 @@
     flex: 1;
     padding: 6px 12px;
     border-radius: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(48, 40, 40)A7A;
     resize: none;
+    color: white;
     transition: border-color 0.3s;
+    background-color: #7A7A7A;
 }
 
 .textarea:focus {
-    border-color: #4A90E2;
+    border-color: #9486F5;
     outline: none;
 }
 

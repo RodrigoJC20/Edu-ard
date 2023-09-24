@@ -70,7 +70,7 @@ export default function TopicList({ params }: { params: { course: string } }) {
                 </div>
             </div>
         </div>
-        <div className="flex flex-col items-center h-screen mt-10">
+        <div className="flex flex-col items-center mt-10">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
                 <form onSubmit={addTopic} className="mb-4">
                     <div className="flex items-center space-x-2"> {/* Centered items */}
