@@ -57,6 +57,7 @@ export default function TopicList({ params }: { params: { course: string } }) {
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+                <a href="/">Go Back</a> {/* Add an anchor tag for "Go Back" */}
                 <form onSubmit={addTopic} className="mb-4">
                     <h3 className="text-xl font-semibold mb-2">{courseName}</h3>
                     <div className="flex items-center space-x-2"> {/* Centered items */}
@@ -69,7 +70,7 @@ export default function TopicList({ params }: { params: { course: string } }) {
                         />
                         <button
                             type="submit"
-                            className="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600" // Changed button color to purple
+                            className="bg-purple-500 text-white px-4 py-2 rounded-md hover-bg-purple-600 focus:outline-none focus-bg-purple-600" // Changed button color to purple
                         >
                             Agregar
                         </button>
