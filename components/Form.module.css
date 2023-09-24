@@ -14,6 +14,22 @@
 
 }
 
+.closeButton {
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+    color: #404040;
+    font-size: large;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: 400ms;
+}
+
+.closeButton:hover {
+    color: #933cfe;
+    cursor: pointer;
+}
+
 .chatContainer1 {
     display: flex;
     flex-direction: column;
@@ -70,7 +86,7 @@
 
 .textarea {
     flex: 1;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
     border: 1px solid #ddd;
     resize: none;
@@ -84,9 +100,9 @@
 
 .sendButton {
     object-fit: cover;
-    height: 40px;
-    width: 40px;
-    background-color: #4A90E2;
+    height: 45px;
+    width: 45px;
+    background-color: #404040;
     border: none;
     color: white;
     padding: 6px 12px;

@@ -6,6 +6,12 @@
     object-fit: cover;
 }
 
+.mainheader {
+    padding: 20px;
+    color: white;
+    background: linear-gradient(to bottom, #9349ed4d, rgba(147, 60, 254, 0));
+}
+
 .ej {
     display: flex;
     flex-direction: row;

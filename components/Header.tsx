@@ -2,7 +2,7 @@ import styles from './Header.module.css';
 
 export default function Header() {
     return (
-        <header className="text-white p-4">
+        <header className={styles.mainheader}>
             <div className={styles.ej}>
                 <div className={styles.ej2}>
                     <img className={styles.logo} src="/logo.svg" alt="" />

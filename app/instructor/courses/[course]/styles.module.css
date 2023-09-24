@@ -7,6 +7,23 @@
     gap: 6rem;
 }
 
+.backButton {
+    display: inline-block;
+    background-color: #828282; /* Set your desired background color */
+    color: #fff; /* Set your desired text color */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Add rounded corners */
+    text-decoration: none; /* Remove default link underline */
+    font-weight: bold; /* Make the text bold if desired */
+    margin: 20px 115px; /* Add margin as needed */
+
+}
+  
+.backButton:hover {
+    background-color: rgb(119, 121, 123); /* Change color on hover if desired */
+    /* You can add more hover effects here */
+}
+
 .img1 {
     height: 8rem;
     object-fit: cover;
