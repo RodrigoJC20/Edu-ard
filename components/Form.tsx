@@ -101,6 +101,8 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
     setHistory((prev) => [...prev, messageHalf])
     console.log(`after set history: ${history}`)
 
+    
+
     let currentResponse: string[] = []
     let quote = false
     while (!done) {
@@ -129,6 +131,8 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
     })
 
     setHistory((prev) => [...prev.slice(0, -1), cleanedDisplay])
+
+
     console.log(termsInQuotes)
     console.log('rerender-2')
     // breaks text indent on refresh due to streaming
@@ -172,46 +176,56 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
     <div className={styles.chatContainer}>
       <button onClick={closeChat}>&le;</button>
       <div className={styles.messageList}>
-
-        {history.map((item: string, index: number) => (
-          <div
-            key={index}
-            className={`${index % 2 === 0 ? styles.userMessage : styles.botMessage}`}
-          >
-            <p>{item}</p>
-          </div>
-        ))}
+      <div className={styles.imgContainer}>
+        <img className={styles.eduImg} src="/Edu-ard.svg" alt="" />
+        <p>Curso: Ejemplo</p>
+        <img className={styles.imgGif} src="/logoChat.gif" alt="" />
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className={styles.chatForm}
-      >
-        <textarea
-          name="Message"
-          placeholder="Type your query"
-          ref={messageInput}
-          onKeyDown={handleEnter}
-          className={styles.textarea}
-        />
-        <button
-          disabled={isLoading}
-          type="submit"
-          className={styles.sendButton}
+      <div className={styles.chatContainer1}>
+        <div className={styles.messageList}>
+
+          {history.map((item: string, index: number) => (
+            <div
+              key={index}
+              className={`${index % 2 === 0 ? styles.userMessage : styles.botMessage}`}
+            >
+              <p className={styles.p}>{item}</p>
+            </div>
+          ))}
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className={styles.chatForm}
         >
-          <svg
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 20 20"
-            className="h-6 w-6 transform rotate-90"
-            xmlns="http://www.w3.org/2000/svg"
+          <textarea
+            name="Message"
+            placeholder="Type your query"
+            ref={messageInput}
+            onKeyDown={handleEnter}
+            className={styles.textarea}
+          />
+          <button
+            disabled={isLoading}
+            type="submit"
+            className={styles.sendButton}
           >
-            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-          </svg>
-        </button>
-      </form>
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 20 20"
+              className="h-6 w-6 transform rotate-90"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
     </div>
+
   );
 
 
