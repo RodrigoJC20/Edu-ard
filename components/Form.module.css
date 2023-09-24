@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.main {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 100px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 60px;
+}
+
+.main h1 {
+    font-weight: 00;
+    font-size: 3rem;
+    color: #4D4D4D;
+    text-align: center;
+}
+
+/* ------ */
+
+/* Form.module.css */
+
+.chatContainer {
+    background-image: url('/ChatFondo.png');
+    background-repeat: no-repeat;  /* Evita que la imagen se repita */
+    background-position: center;   /* Centra la imagen en el contenedor */
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
