@@ -34,7 +34,7 @@ export default function Home() {
           />
           <button type="submit">Go</button>
         </form>
-        <Link href="/instructor/">I’m a professor</Link>
+        <Link href="/instructor/" className={styles.instructor}>I’m a professor</Link>
       </section>
 
     </main>

@@ -12,14 +12,14 @@
 }
 
 .logo {
-    height: 350px;
+    height: 300px;
     object-fit: cover;
 }
 
 .info {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -41,7 +41,7 @@
 .info input {
     margin: 2rem 0;
     border: solid 1px #828282;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 0px 0px  10px;
     font-size: 20px;
     padding: 0 20px;
     width: 100%;
@@ -49,7 +49,8 @@
 }
 
 .info input:hover {
-    background-color: #232323;
+    background-color: #373737;
+    color: #e8e8e8;
 }
 
 .info button {
@@ -59,8 +60,21 @@
     border-radius: 0 10px 10px 0;
     color: white;
     height: 50px;
-    /* font-size: 20px;
-    padding: 10px 0;
-    border: none; */
     cursor: pointer;
+    transition: 0.5s;
+
+}
+
+.info button:hover {
+    background-color: #933cfe;
+    transition: 0.5s;
+}
+
+.instructor {
+    font-weight: 500;
+    color: #828282b5;
+}
+
+.instructor:hover {
+    color: #933cfe;
 }
