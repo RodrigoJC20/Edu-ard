@@ -1,0 +1,14 @@
+.backButton {
+    display: inline-block;
+    color: #4D4D4D; /* Set your desired text color */
+    padding: 5px 10px; /* Adjust padding as needed */
+    text-decoration: none; /* Remove default link underline */
+    font-weight: 500; /* Make the text bold if desired */
+    margin: 20px 115px; /* Add margin as needed */
+    transition: 400ms;
+}
+  
+.backButton:hover {
+    color: #933cfe; /* Change color on hover if desired */
+    /* You can add more hover effects here */
+}

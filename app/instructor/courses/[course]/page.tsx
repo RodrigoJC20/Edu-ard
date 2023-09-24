@@ -32,7 +32,7 @@ export default function Course({ params } : {params: {course: string}}) {
         <>
         <Header />
         <div>
-            <Link href="/instructor/" className={styles.backButton}>&lt;</Link>
+            <Link href="/instructor/" className={styles.backButton}>&lt; Regresar</Link>
         </div>
         <div>
             <div className={styles.cont1}>

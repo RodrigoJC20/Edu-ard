@@ -53,7 +53,7 @@ export default function Instructor() {
             <div>
                 <Header />
                 <div>
-                    <Link href="/" className={styles.backButton}>&lt;</Link>
+                    <Link href="/" className={styles.backButton}>&lt; Regresar</Link>
                 </div>
                 <div className={styles.main}>
                     <h1 className='text-2xl $'>¡Bienvenido Mtro. López!</h1>

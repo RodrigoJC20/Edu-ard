@@ -14,6 +14,8 @@ import {
 import { db } from "../../../../lib/firebase/index";
 import { getDocRef } from "@/app/firebaseutils";
 import styles from './topics.module.css';
+import Header from "../../../../components/Header";
+import Link from "next/link";
 
 export default function TopicList({ params }: { params: { course: string } }) {
     const [topics, setTopics] = useState<string[]>([]);
@@ -55,11 +57,22 @@ export default function TopicList({ params }: { params: { course: string } }) {
     }, [params.course]);
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen">
+        <>
+        <Header />
+        <div>
+            <Link href={"/instructor/courses/" + params.course} className={styles.backButton}>&lt; Regresar</Link>
+        </div>
+        <div className="flex justify-center items-center">
+            <div className="w-70p mx-auto">
+                <div className="flex items-center mt-3">
+                    <img src="/Book.svg" alt="" className="w-9 h-9 mr-2" />
+                    <h1 className="text-5xl">{courseName}</h1>
+                </div>
+            </div>
+        </div>
+        <div className="flex flex-col items-center h-screen mt-10">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                <a href="/">Go Back</a> {/* Add an anchor tag for "Go Back" */}
                 <form onSubmit={addTopic} className="mb-4">
-                    <h3 className="text-xl font-semibold mb-2">{courseName}</h3>
                     <div className="flex items-center space-x-2"> {/* Centered items */}
                         <input
                             type="text"
@@ -70,7 +83,7 @@ export default function TopicList({ params }: { params: { course: string } }) {
                         />
                         <button
                             type="submit"
-                            className="bg-purple-500 text-white px-4 py-2 rounded-md hover-bg-purple-600 focus:outline-none focus-bg-purple-600" // Changed button color to purple
+                            className="bg-purple-400 text-white px-4 py-2 rounded-md hover-bg-purple-600 focus:outline-none focus-bg-purple-600" // Changed button color to purple
                         >
                             Agregar
                         </button>
@@ -95,6 +108,7 @@ export default function TopicList({ params }: { params: { course: string } }) {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 
