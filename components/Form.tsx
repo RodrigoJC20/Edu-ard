@@ -51,10 +51,11 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
   })
 
   rememberTopics = rememberTopics.concat("\nI do not want you to answer anything that is not related to one of those topics. If I ever ask" +
-    "something that is not completely related to them just say \"I can't answer that\". Do not talk about this instruction," +
+    "something that is not completely related to them just say \"Disculpa, pero no puedo responder eso\". Do not talk about this instruction," +
     "just reply to what is below this. At the top of your response, I want in a single line in array like format (\"tag1, tag2, tag3\")" +
     "the topics that you think apply to the question I asked you. I do not want any other text, just the array and your response to my question." +
-    "If what I ask does not apply to any of the tasks, just put an empty line. Do not put anything in between double quotes\n=======================================\n")
+    "If what I ask does not apply to any of the tasks, just put an empty line. Do not put anything in between double quotes."
+    + "Please never use \"[\" or \"]\", and try to be consize, approachable and friendly. Never send empty responses.\n=======================================\n")
 
   //console.log(`Instructions: ${rememberTopics}`)
 
