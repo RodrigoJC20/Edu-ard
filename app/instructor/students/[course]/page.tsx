@@ -52,7 +52,9 @@ export default function Instructor({ params } : {params: {course: string}}) {
             });
     
             setData(newData); // Assuming you have a state variable called `setData` to hold the transformed data
+            console.log(newData); 
         });
+
     
         return () => unsubscribe();
     }, [params.course]);

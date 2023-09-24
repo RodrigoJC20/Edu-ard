@@ -191,7 +191,7 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
 
   const closeChat = async (e: any) => {
     console.log(termsInQuotes)
-    await updateStudentCourse(courseId, "Marco", termsInQuotes);
+    await updateStudentCourse(courseId, "Vianey", termsInQuotes);
     window.location.href = "/"
   }
 
