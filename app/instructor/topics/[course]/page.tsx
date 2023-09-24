@@ -1,12 +1,27 @@
 'use client'
+
 import { useState, useEffect } from "react";
+import { collection, addDoc, onSnapshot, query, doc, setDoc, getDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "../../../../lib/firebase/index";
-import { doc, onSnapshot } from "firebase/firestore";
+import { getDocRef } from "@/app/firebaseutils";
 
 export default function TopicList({ params } : {params: {course: string}}) {
 
     const [topics, setTopics] = useState<string[]>([]);
     const [courseName, setCourseName] = useState<string>('');
+    const [newTopic, setTopic] = useState<string>('');
+
+    const addTopic = async (e: any) => {
+        e.preventDefault()
+        const courseRef = getDocRef(params.course);
+        const docSnapshot = await getDoc(courseRef);
+        if (newTopic !== '' && docSnapshot.exists()) {
+            await updateDoc(courseRef, {
+                topics: [...topics, newTopic] // Use spread operator to update topics array immutably
+            });
+        }
+        setTopic('');
+    }
 
     useEffect(() => {
         const docRef = doc(db, "course", params.course);
@@ -32,15 +47,25 @@ export default function TopicList({ params } : {params: {course: string}}) {
 
     return (
         <div>
-            <h1 className='text-2xl'>{courseName}</h1>
             <div>
-                {topics?.map((topic, index) => (
-                    <div key={index} className="flex">
-                        <h1>{topic}</h1>
-                        <button>X</button>
-                    </div>
-                ))}
+                <div>
+                    {topics?.map((topic, index) => (
+                        <div key={index} className="flex">
+                            <h1>{topic}</h1>
+                        </div>
+                    ))}
+                </div>
             </div>
+            <form onSubmit={addTopic}>
+                <h3>{courseName}</h3>
+                <input
+                    type="text"
+                    placeholder="Nombre del curso"
+                    value={newTopic}
+                    onChange={(e) => setTopic(e.target.value)}
+                />
+                <button type="submit">Agregar</button>
+            </form>
         </div>
     );
 }
