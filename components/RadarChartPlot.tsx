@@ -1,11 +1,16 @@
 import {RadarChart, Radar, PolarAngleAxis, PolarGrid, Legend, Tooltip, ResponsiveContainer} from "recharts";
 
-interface UserData {
-    name: string;
-    topics: {
-        topic: string;
-        count: number;
-    }[];
+// interface UserData {
+//     name: string;
+//     topics: {
+//         topic: string;
+//         count: number;
+//     }[];
+// }
+
+interface UserData{
+    topic: string,
+    amount: number
 }
 
 const RadarChartPlot = ({data}: {data:UserData[]}) => {
@@ -36,26 +41,12 @@ const RadarChartPlot = ({data}: {data:UserData[]}) => {
     //     }
     // ];
 
-    const topicDataMap: { [key: string]: { topic: string; amount: number } } = {};
 
-    for (const user of data) {
-        for (const topicData of user.topics) {
-            const { topic, count } = topicData;
-
-            if (topic in topicDataMap) {
-                topicDataMap[topic].amount += count;
-            } else {
-                topicDataMap[topic] = { topic, amount: count };
-            }
-        }
-    }
-
-    const transformedData = Object.values(topicDataMap);
 
     return (
         <>
             <ResponsiveContainer width="100%" height="100%">
-                <RadarChart outerRadius={90} width={730} height={250} data={transformedData}>
+                <RadarChart outerRadius={90} width={730} height={250} data={data}>
                     <PolarGrid />
                     <PolarAngleAxis dataKey="topic" />
                     <Radar name="Questions" dataKey="amount" stroke="#919191" fill="#933cfe" fillOpacity={0.6} />

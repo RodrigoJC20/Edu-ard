@@ -1,4 +1,5 @@
 import Charts from "../../components/Charts"
+import StudentList from "@/components/StudentList";
 
 export default function Home(){
 
@@ -43,7 +44,7 @@ export default function Home(){
                 },
                 {
                     topic: "programming",
-                    count: 2
+                    count: 5
                 }
             ]
         },
@@ -66,8 +67,10 @@ export default function Home(){
         <>
             <div className={"flex"}>
                 <main className={"flex-col w-1/2 mx-auto relative"}>
-                    <h1>Overall Statistics</h1>
+                    <h1 className={"text-center"}>Subject</h1>
+                    <h2>Overall Statistics</h2>
                     <Charts data={data}/>
+                    <StudentList users={data}/>
                 </main>
             </div>
         </>
