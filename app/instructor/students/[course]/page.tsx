@@ -3,37 +3,66 @@ import Link from "next/link";
 import { collection, addDoc, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../../../lib/firebase/index";
 import React, { useState, useEffect } from "react";
+import TopicList from "../../topics/[course]/page";
+import Charts from "@/components/Charts";
+import StudentList from "@/components/StudentList";
+
+interface UserData {
+    name: string;
+    topics: {
+        topic: string;
+        count: number;
+    }[];
+}
 
 export default function Instructor({ params } : {params: {course: string}}) {
 
-    const [students, setStudents] = useState<string[]>([]);
+    const [data, setData] = useState<UserData[]>([]);
+
+    function countOccurrences(arr: any[], element: any) {
+        return arr.reduce((count, currentElement) => {
+            return currentElement === element ? count + 1 : count;
+        }, 0);
+    }
+    
 
     useEffect(() => {
         const q = query(collection(db, 'course-student'), where('courseId', '==', params.course));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            let studentArr: string[] = [];
+            let newData: any[] = []; // Create a new array to hold the transformed data
     
             querySnapshot.forEach((doc) => {
-                const { studentName } = doc.data(); // Extract the 'name' property
-                studentArr.push(studentName);
+                const { studentName, topicsList } = doc.data(); // Extract the 'name' property
+    
+                let userData = newData.find(item => item.name === studentName);
+                if (!userData) {
+                    userData = { name: studentName, topics: [] };
+                    newData.push(userData);
+                }
+    
+                topicsList.forEach((topic: any) => {
+                    let existingTopic = userData.topics.find((item: { topic: any; }) => item.topic === topic);
+                    if (!existingTopic) {
+                        const count = countOccurrences(topicsList, topic);
+                        userData.topics.push({ topic, count });
+                    }
+                });
             });
     
-            setStudents(studentArr);
+            setData(newData); // Assuming you have a state variable called `setData` to hold the transformed data
         });
     
-        return () => unsubscribe()
-    }, []);
+        return () => unsubscribe();
+    }, [params.course]);
 
     return (
-        <div>
-            <h1 className='text-2xl'>Estudiantes</h1>
-            <div>
-                    {students?.map((student, index) => (
-                        <div key={index} className="flex">
-                            <Link href={`/instructor/students/${params.course}/${student}`}>{student}</Link>
-                        </div>
-                    ))}
-                </div>
-        </div>
+        <>
+            <div className={"flex"}>
+                <main className={"flex-col w-1/2 mx-auto relative"}>
+                    <Charts data={data}/>
+                    <StudentList users={data}/>
+                </main>
+            </div>
+        </>
     );
 }

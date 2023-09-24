@@ -61,7 +61,37 @@ export default function Home(){
                 }
             ]
         },
-    ]
+            {
+                name: "Juan",
+                topics: [
+                    {
+                        topic: "math",
+                        count: 12
+                    },
+                    {
+                        topic: "history",
+                        count: 11
+                    },
+                    {
+                        topic: "programming",
+                        count: 5
+                    }
+                ]
+            },
+            {
+                name: "Jose",
+                topics: [
+                    {
+                        topic: "math",
+                        count: 4
+                    },
+                    {
+                        topic: "history",
+                        count: 11
+                    }
+                ]
+            }
+        ]
 
     return (
         <>
