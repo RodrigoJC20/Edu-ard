@@ -101,6 +101,8 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
     setHistory((prev) => [...prev, messageHalf])
     console.log(`after set history: ${history}`)
 
+    
+
     let currentResponse: string[] = []
     let quote = false
     while (!done) {
@@ -129,6 +131,8 @@ const Form = ({ modelsList, topicsArray, courseId }: { modelsList: OpenAI.Models
     })
 
     setHistory((prev) => [...prev.slice(0, -1), cleanedDisplay])
+
+
     console.log(termsInQuotes)
     console.log('rerender-2')
     // breaks text indent on refresh due to streaming
