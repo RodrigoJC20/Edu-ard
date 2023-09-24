@@ -23,18 +23,18 @@ export default function Home() {
       <section className={styles.info}>
 
         <img src="/Edu-ard.svg" alt="logo" />
-          <h3>Join an Edu-ard chatbot course with a link</h3>
+          <h3>Únete a un chat de un curso con Edu-ard mediante un ID</h3>
         <form className={styles.form} onSubmit={launchChat}>
           <input
           className={styles.input}
             type="text"
-            placeholder="Paste a link in here.."
+            placeholder="Pega tu ID aquí.."
             value={course}
             onChange={(e) => setCourse(e.target.value)}
           />
-          <button type="submit">Go</button>
+          <button type="submit">Vamos</button>
         </form>
-        <Link href="/instructor/" className={styles.instructor}>I’m a professor</Link>
+        <Link href="/instructor/" className={styles.instructor}>Soy un profesor</Link>
       </section>
 
     </main>
