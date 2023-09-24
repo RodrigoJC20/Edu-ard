@@ -1,26 +1,46 @@
-import AddTopic from "./AddTopic";
+'use client'
+import { useState, useEffect } from "react";
+import { db } from "../../../../lib/firebase/index";
+import { doc, onSnapshot } from "firebase/firestore";
 
-async function getTopics() {
-    return ['Tema 1', 'Tema 2', 'Tema 3'];
-}
+export default function TopicList({ params } : {params: {course: string}}) {
 
+    const [topics, setTopics] = useState<string[]>([]);
+    const [courseName, setCourseName] = useState<string>('');
 
-export default async function TopicList({ params } : {params: {course: string}}) {
-    
-    const topics = await getTopics();
+    useEffect(() => {
+        const docRef = doc(db, "course", params.course);
+
+        const unsubscribe = onSnapshot(docRef, (docSnapshot) => {
+            if (docSnapshot.exists()) {
+                const data = docSnapshot.data();
+                if (data) {
+                    // Assuming there's a "topics" field in your document
+                    const topicsArray: string[] = data.topics || [];
+                    
+                    setTopics(topicsArray);
+                    setCourseName(data.name);
+                }
+            } else {
+                // Handle the case when the document doesn't exist
+                console.log("Document does not exist");
+            }
+        });
+
+        return () => unsubscribe();
+    }, [params.course]);
 
     return (
         <div>
-            <h1 className='text-2xl'>{params.course}</h1>
+            <h1 className='text-2xl'>{courseName}</h1>
             <div>
                 {topics?.map((topic, index) => (
                     <div key={index} className="flex">
-                        <Topic topic={topic} />
+                        <h1>{topic}</h1>
                         <button>X</button>
                     </div>
                 ))}
             </div>
-            <AddTopic/>
         </div>
     );
 }
